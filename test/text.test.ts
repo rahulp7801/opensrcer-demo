@@ -6,6 +6,10 @@ test("slugify keeps simple titles readable", () => {
   assert.equal(slugify("hello world"), "hello-world");
 });
 
+test("slugify collapses punctuation runs and trims edge dashes", () => {
+  assert.equal(slugify("  Hello, World!  "), "hello-world");
+});
+
 test("truncate leaves short text alone", () => {
   assert.equal(truncate("short", 10), "short");
 });
