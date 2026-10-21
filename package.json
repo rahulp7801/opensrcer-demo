@@ -1,0 +1,11 @@
+{
+  "name": "textkit",
+  "version": "0.3.1",
+  "description": "Small, dependency-free text helpers: slugs, truncation, durations and CSV lines.",
+  "type": "module",
+  "main": "src/index.ts",
+  "scripts": {
+    "test": "node --experimental-strip-types --test \"test/**/*.test.ts\""
+  },
+  "license": "MIT"
+}
