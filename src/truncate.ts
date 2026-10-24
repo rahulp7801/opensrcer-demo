@@ -12,5 +12,13 @@ export interface TruncateOptions {
 export function truncate(text: string, max: number, options: TruncateOptions = {}): string {
   const ellipsis = options.ellipsis ?? "…";
   if (text.length <= max) return text;
-  return text.slice(0, max) + ellipsis;
+  if (max <= ellipsis.length) return ellipsis.slice(0, max);
+
+  const budget = max - ellipsis.length;
+  let truncated = text.slice(0, budget);
+  if (text[budget] !== " ") {
+    const lastSpace = truncated.lastIndexOf(" ");
+    if (lastSpace > 0) truncated = truncated.slice(0, lastSpace);
+  }
+  return truncated.trimEnd() + ellipsis;
 }
